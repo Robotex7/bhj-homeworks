@@ -1,12 +1,10 @@
-const rotators = document.querySelectorAll('.rotator');
+let spans = Array.from(document.querySelectorAll('.rotator__case'));
+let i = 0;
 
-rotators.forEach(function(rotator) {
-    const items = rotator.querySelectorAll('.rotator__case');
-    const index = 0;
-
-    setInterval(function() {
-        items[index].classList.remove('rotator__case_active');
-        index = (index + 1) % items.length;
-        items[index].classList.add('rotator__case_active');
-    }, 1000);
-});
+setInterval(() => {
+    spans[i].classList.remove('rotator__case_active');
+    i++;
+    if (i === spans.length) i = 0; 
+    spans[i].classList.add('rotator__case_active');
+    spans[i].style.color = spans[i].dataset.color;
+}, 1000);
